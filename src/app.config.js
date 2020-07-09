@@ -1,5 +1,6 @@
 module.exports = {
-  pages: ['pages/home/index', 'pages/user/index'],
+  // pages: ['pages/home/index', 'pages/user/index'],
+  pages: ['pages/home/index', 'pages/user/index'].reverse(),
   window: {
     navigationBarTitleText: '群基金收益率排行榜',
     // navigationBarBackgroundColor: '#282c34'

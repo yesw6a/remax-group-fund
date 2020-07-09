@@ -7,7 +7,6 @@ export default () => {
   const renderHeader = () => {
     return (
       <View className={styles.header__wrapper}>
-        <Button openType="getUserInfo">获取用户信息</Button>
       </View>
     )
   }

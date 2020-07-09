@@ -1,5 +1,15 @@
-import './app.css';
+import { useAppEvent } from 'remax/macro'
+import { cloud } from 'remax/wechat'
+import './app.css'
 
-const App = props => props.children;
+function App(props) {
+  useAppEvent('onLaunch', () => {
+    cloud.init({
+      traceUser: true,
+    })
+  })
 
-export default App;
+  return props.children
+}
+
+export default App
