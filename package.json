@@ -1,0 +1,31 @@
+{
+  "name": "remax-group-fund",
+  "private": true,
+  "version": "1.0.0",
+  "description": "微信群小程序，用来展示基金相关的内容，展示群内投资者的收益排行榜",
+  "main": "index.js",
+  "keywords": [],
+  "author": "wuhuanda <583783099@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "set REMAX_DEBUG=true&& remax build -t wechat -w",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "set NODE_ENV=production&& remax build -t wechat"
+  },
+  "dependencies": {
+    "@remax/plugin-sass": "^1.0.0",
+    "@vant/weapp": "^1.3.3",
+    "bignumber.js": "^9.0.0",
+    "chokidar": "^3.4.0",
+    "classnames": "^2.2.6",
+    "dayjs": "^1.8.29",
+    "react": "^16.12.0",
+    "remax": "^2.6.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "node-sass": "^4.14.1"
+  }
+}
