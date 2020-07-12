@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { View, Text, Button } from 'remax/wechat'
 import BigNumber from 'bignumber.js'
-import VanSwiperCell from '@vant/weapp/dist/swipe-cell'
 import { Image, TextInput, Toast, Divider } from '@/components'
 import Dialog from '@vant/weapp/dist/dialog'
 import { AppContext } from '@/app'
-import { apiLogin, apiGetFundDetail, apiAddFund } from '@/utils/apis'
+import { apiLogin, apiGetFundDetail, apiAddFund, apiListUserFunds } from '@/utils/apis'
 import { isLogin } from '@/utils/helper'
 import { useRequest } from '@/hooks'
 
 import styles from './style.scss'
+import FundsList from './components/fundsList'
 
 function Index() {
   const { userInfo, setUserInfo } = useContext(AppContext)
@@ -119,16 +119,10 @@ function Index() {
         <Image src={avatarUrl} className={styles.user_avatar__img} />
         <Text className={styles.user_name__text}>{nickName}</Text>
         {renderAddFund()}
-        {renderFunds()}
+        <FundsList />
         {renderModalFundDetail()}
       </View>
     )
-  }
-
-  const renderFundsEmpty = () => {}
-
-  const renderFunds = () => {
-    return <View className={styles.funds__wrapper}>{/* <Text className={}></Text> */}</View>
   }
 
   return <View className={styles.wrapper}>{loginState ? renderUserInfo() : renderUnLogin()}</View>

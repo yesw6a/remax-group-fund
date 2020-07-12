@@ -1,0 +1,16 @@
+@import '../../../../app.scss';
+
+.funds_wrapper {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  .funds_label {
+    font-size: 32px;
+    font-weight: bold;
+    color: $BlackS;
+  }
+  .item__container {
+    @include flex-row();
+    align-items: center;
+  }
+}
