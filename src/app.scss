@@ -1,0 +1,66 @@
+page {
+  background-color: #f5f5f5;
+}
+
+// 主题颜色
+$Primary: #fed32f;
+$Secondary: #ff860d;
+$Red: #ff2c2c;
+$Brown: #f5d29d;
+$Brand: #ffffff;
+
+// 黑色
+$Black: #000000;
+$BlackS: #1a1920;
+$BlackM: #666666;
+$BlackL: #999999;
+$BlackXL: #d6d6d6;
+$PageBg: #f5f5f5;
+$Divider: #ededed;
+
+// 白色
+$White: #ffffff;
+
+//棕色
+$BrownL: #794915;
+
+// 直播模块颜色
+$LiveLiving: #f73f09;
+$LiveNotice: #60b955;
+$LiveRecord: #515252;
+
+// 行高
+$LineHeightS: 1.2;
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// #region: 单行文字溢出省略号显示（某些浏览器需设置宽度）
+@mixin single-line-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  line-height: $LineHeightS;
+}
+
+// #region: 多行文本溢出省略号显示
+// @param {Number} $num - 展示行数
+@mixin multi-line-ellipsis($num) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  line-height: $LineHeightS;
+}

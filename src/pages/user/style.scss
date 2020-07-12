@@ -1,3 +1,74 @@
+@import '../../app.scss';
+
 .wrapper {
-  background-color: #f5f5f5;
+  .user_info__wrapper {
+    @include flex-col();
+    align-items: center;
+    .user_avatar__img {
+      $USER_AVATAR_IMG_SIZE: 128px;
+      width: $USER_AVATAR_IMG_SIZE;
+      height: $USER_AVATAR_IMG_SIZE;
+      border-radius: $USER_AVATAR_IMG_SIZE / 2;
+    }
+    .user_avatar__text {
+      font-size: 28px;
+      color: $BlackS;
+    }
+    .fund_add__wrapper {
+      @include flex-col();
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      .fund_add__label {
+        font-size: 32px;
+        font-weight: bold;
+        color: $BlackS;
+      }
+      .fund_add__container {
+        @include flex-row();
+        align-items: center;
+        .fund_add__input {
+          flex: 1;
+          margin: 0;
+          font-size: 24px;
+          height: 22px;
+        }
+        .fund_add__button {
+          @include flex-row();
+          justify-content: center;
+          align-items: center;
+          height: 82px;
+          font-size: 24px;
+          border-radius: 0;
+          background-color: $Primary;
+          border: none;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 基金详情模态框 */
+.modal_fund_detail__container {
+  padding: 0 20px 20px;
+  @include flex-col();
+  justify-content: center;
+  .modal_fund_detail__text {
+    padding: 10px 0;
+    font-size: 24px;
+    color: $BlackS;
+  }
+  .modal_fund_detail_input__row {
+    @include flex-row();
+    align-items: center;
+    .modal_fund_detail_current_rate__input {
+      margin: 0;
+      padding: 0;
+      height: 22px;
+      font-size: 24px;
+    }
+  }
 }

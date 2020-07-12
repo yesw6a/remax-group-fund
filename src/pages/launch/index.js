@@ -2,17 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import { View, Text, getUserInfo, redirectTo, switchTab } from 'remax/wechat'
 import { AppContext } from '@/app'
 import { apiLogin } from '@/utils/apis'
-import { updateUserInfo } from '@/database/user'
 
 function launch() {
   const { setUserInfo } = useContext(AppContext)
-
-  const getOpenid = () => {
-    apiLogin().then((res) => {
-      const { openid } = res
-      global.openid = openid
-    })
-  }
 
   const handleLogin = () => {
     getUserInfo().then((res) => {
@@ -21,7 +13,10 @@ function launch() {
         // 用户拒绝
         return
       }
-      updateUserInfo(userInfo).then((res) => setUserInfo(res))
+      apiLogin(userInfo).then((res) => {
+        console.log('login res', res);
+        setUserInfo(res)
+      })
     })
   }
 
@@ -31,7 +26,6 @@ function launch() {
 
   const init = async () => {
     try {
-      await getOpenid()
       await handleLogin()
       goNextPage()
     } catch (error) {
