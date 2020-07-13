@@ -3,14 +3,11 @@ import { View, Text } from 'remax/wechat'
 import VanSwiperCell from '@vant/weapp/dist/swipe-cell'
 import BigNumber from 'bignumber.js'
 import { Toast, Divider } from '@/components'
-import { apiListUserFunds, apiDeleteUserFund } from '@/utils/apis'
-import { useRequest } from '@/hooks'
+import { apiDeleteUserFund } from '@/utils/apis'
 
 import styles from './style.scss'
 
-function FundsList() {
-  const [requestFundList, fundList] = useRequest(apiListUserFunds, { initData: [] })
-
+function FundsList({ fundList }) {
   const handleUnfollow = (code) => {
     apiDeleteUserFund({ code })
   }
@@ -40,10 +37,6 @@ function FundsList() {
   }
 
   const renderFundsEmpty = () => {}
-
-  useEffect(() => {
-    requestFundList()
-  }, [])
 
   return (
     <View className={styles.funds__wrapper}>

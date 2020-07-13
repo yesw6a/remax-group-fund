@@ -18,6 +18,7 @@ function Index() {
   const modalFundCurrentRateInputRef = useRef()
 
   const [requestFundDetail, fundDetail] = useRequest(apiGetFundDetail, { initData: {} })
+  const [requestFundList, fundList] = useRequest(apiListUserFunds, { initData: [] })
 
   const { avatarUrl, nickName } = userInfo || {}
 
@@ -44,9 +45,7 @@ function Index() {
   const handleAddFund = (code) => {
     const value = modalFundCurrentRateInputRef.current.getValue() || '0'
     const rate = BigNumber(value).times(100).toFixed(2)
-    apiAddFund({ code: code, rate: rate }).then((res) => {
-      console.log('code res', res)
-    })
+    apiAddFund({ code: code, rate: rate }).then((res) => {})
   }
 
   const renderModalFundDetail = () => {
@@ -119,11 +118,15 @@ function Index() {
         <Image src={avatarUrl} className={styles.user_avatar__img} />
         <Text className={styles.user_name__text}>{nickName}</Text>
         {renderAddFund()}
-        <FundsList />
+        <FundsList fundList={fundList} />
         {renderModalFundDetail()}
       </View>
     )
   }
+
+  useEffect(() => {
+    requestFundList()
+  }, [])
 
   return <View className={styles.wrapper}>{loginState ? renderUserInfo() : renderUnLogin()}</View>
 }

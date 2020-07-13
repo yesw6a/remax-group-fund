@@ -9,6 +9,7 @@ function App(props) {
 
   useAppEvent('onLaunch', () => {
     cloud.init({
+      env: "group-fund-125dc",
       traceUser: true,
     })
   })
