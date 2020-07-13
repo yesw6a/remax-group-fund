@@ -43,7 +43,7 @@ function Index() {
 
   const handleAddFund = (code) => {
     const value = modalFundCurrentRateInputRef.current.getValue() || '0'
-    const rate = BigNumber(value).div(100).toString()
+    const rate = BigNumber(value).times(100).toFixed(2)
     apiAddFund({ code: code, rate: rate }).then((res) => {
       console.log('code res', res)
     })

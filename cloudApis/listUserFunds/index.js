@@ -34,7 +34,7 @@ exports.main = async (event, context) => {
               if (details.length > 0) {
                 const { fundsDetail, funds } = details[0]
                 fundsDetail.reduce((acc, cur) => {
-                  funds.map((o) => o.code === cur.code && (cur['userRate'] = o.rate))
+                  funds.map((o) => o.code === cur.code && (cur['rateUser'] = o.rate))
                   return acc.concat([cur])
                 }, [])
                 list = fundsDetail

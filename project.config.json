@@ -3,7 +3,6 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -25,7 +24,8 @@
 		"bundle": false,
 		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"enhance": true
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
