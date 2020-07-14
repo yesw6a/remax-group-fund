@@ -72,6 +72,12 @@ exports.main = async (event) => {
         message: '基金代码需为数字',
       }
     }
+    if (!rate || isNaN(Number(rate))) {
+      return {
+        code: 400,
+        message: '收益率需为数字',
+      }
+    }
 
     await cf({ name: 'getFundDetail', data: { code } })
       .then((res) => {

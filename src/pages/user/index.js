@@ -44,8 +44,14 @@ function Index() {
 
   const handleAddFund = (code) => {
     const value = modalFundCurrentRateInputRef.current.getValue() || '0'
+    if (Number(isNaN)) {
+      return Toast.showInfo('收益率需为数字')
+    }
     const rate = BigNumber(value).times(100).toFixed(2)
-    apiAddFund({ code: code, rate: rate }).then((res) => {})
+    Toast.showLoading()
+    apiAddFund({ code: code, rate: rate }).then((res) => {
+      requestFundList()
+    })
   }
 
   const renderModalFundDetail = () => {
@@ -118,7 +124,9 @@ function Index() {
         <Image src={avatarUrl} className={styles.user_avatar__img} />
         <Text className={styles.user_name__text}>{nickName}</Text>
         {renderAddFund()}
-        <FundsList fundList={fundList} />
+        {Array.isArray(fundList) && fundList.length > 0 && (
+          <FundsList fundList={fundList} onRefresh={requestFundList} />
+        )}
         {renderModalFundDetail()}
       </View>
     )

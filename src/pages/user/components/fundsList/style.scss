@@ -31,15 +31,29 @@
       color: $BlackS;
     }
   }
-  .item_unfollow__button {
+  @mixin itemRightButton {
     @include flex-row();
     justify-content: center;
     align-items: center;
     height: 100%;
-    min-width: 100px;
     padding: 0 12px;
     font-size: 24px;
     color: $White;
+  }
+  .item_right__buttons {
+    @include flex-row();
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .item_unfollow__button {
+    @include itemRightButton();
+    width: 100px;
     background-color: #ee0a24;
+  }
+  .item_update_rate__button {
+    @include itemRightButton();
+    width: 120px;
+    background-color: $Secondary;
   }
 }
