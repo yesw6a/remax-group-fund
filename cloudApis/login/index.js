@@ -24,17 +24,6 @@ exports.main = async (event, context) => {
       .then(async (res) => {
         const { code, message, data = {} } = res.result
         const { _id } = data
-        await db.collection('table_user').doc(_id).update({
-          data: params,
-        })
-        result = {
-          code: 200,
-          message: 'success',
-          data: params,
-        }
-      })
-      .catch(async (err) => {
-        const { code, message } = err
         if (code === 50000) {
           Object.assign(params, {
             createdAt: Date.now(),
@@ -48,10 +37,21 @@ exports.main = async (event, context) => {
             data: params,
           }
         } else {
+          await db.collection('table_user').doc(_id).update({
+            data: params,
+          })
           result = {
-            code,
-            message,
+            code: 200,
+            message: 'success',
+            data: params,
           }
+        }
+      })
+      .catch(async (err) => {
+        const { code, message } = err
+        result = {
+          code,
+          message,
         }
       })
   } catch (error) {}
