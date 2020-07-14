@@ -3,12 +3,11 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-const { OPENID } = cloud.getWXContext()
-const db = cloud.database()
-const cf = cloud.callFunction
-
 // 云函数入口函数
 exports.main = async (event, context) => {
+  const { OPENID } = cloud.getWXContext()
+  const db = cloud.database()
+  const cf = cloud.callFunction
   let result = {}
 
   try {

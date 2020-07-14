@@ -9,12 +9,18 @@
     font-weight: bold;
     color: $BlackS;
   }
+  .fund_list__wrapper {
+    padding: 0 20px;
+    background-color: $White;
+  }
   .item__container {
     @include flex-row();
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: $White;
+    padding: 20px 0;
+    border-top-width: 1px;
+    border-top-color: $Divider;
+    border-top-style: solid;
     .fund_info {
       @include flex-col();
       .fund_name {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from 'react'
 import { View, Text, Button } from 'remax/wechat'
 import BigNumber from 'bignumber.js'
 import { Image, TextInput, Toast, Divider } from '@/components'
-import Dialog from '@vant/weapp/dist/dialog'
+import VanDialog from '@vant/weapp/dist/dialog'
 import { AppContext } from '@/app'
 import { apiLogin, apiGetFundDetail, apiAddFund, apiListUserFunds } from '@/utils/apis'
 import { isLogin } from '@/utils/helper'
@@ -57,7 +57,7 @@ function Index() {
   const renderModalFundDetail = () => {
     const { code, name, manager } = fundDetail || {}
     return (
-      <Dialog
+      <VanDialog
         use-slot
         show={isVisibleModalFundDetail}
         title="基金详情"
@@ -81,7 +81,7 @@ function Index() {
             />
           </View>
         </View>
-      </Dialog>
+      </VanDialog>
     )
   }
 

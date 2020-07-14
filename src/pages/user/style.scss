@@ -4,6 +4,7 @@
   .user_info__wrapper {
     @include flex-col();
     align-items: center;
+    padding: 20px;
     .user_avatar__img {
       $USER_AVATAR_IMG_SIZE: 128px;
       width: $USER_AVATAR_IMG_SIZE;
