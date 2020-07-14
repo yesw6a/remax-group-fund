@@ -1,3 +1,44 @@
+@import '../../app.scss';
+
 .wrapper {
-  background-color: #f5f5f5;
+  .ranking__wrapper {
+    padding: 24px;
+    .ranking_rank {
+      width: 80px;
+    }
+    .ranking_nickname {
+      width: 120px;
+    }
+    .ranking_fundName {
+      width: 200px;
+    }
+    .ranking_code {
+      width: 100px;
+    }
+    .ranking_rate {
+      width: 100px;
+    }
+    .ranking_title__wrapper {
+      @include flex-row();
+      justify-content: center;
+      align-items: center;
+      height: 78px;
+      .ranking_title__text {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: $BlackS;
+      }
+    }
+    .ranking__container {
+      @include flex-row();
+      align-items: center;
+      justify-content: center;
+      .ranking__container__text {
+        text-align: center;
+        font-size: 24px;
+        color: $BlackM;
+      }
+    }
+  }
 }

@@ -14,14 +14,15 @@ function launch() {
         return
       }
       apiLogin(userInfo).then((res) => {
-        console.log('login res', res);
+        console.log('login res', res)
         setUserInfo(res)
       })
     })
   }
 
   const goNextPage = () => {
-    switchTab({ url: '/pages/user/index' })
+    // switchTab({ url: '/pages/user/index' })
+    switchTab({ url: '/pages/home/index' })
   }
 
   const init = async () => {
