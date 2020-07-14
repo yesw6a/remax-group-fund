@@ -1,20 +1,21 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const getUserInfo = require('../getUserInfo')
 
 cloud.init()
 
+const { OPENID } = cloud.getWXContext()
+const db = cloud.database()
+const cf = cloud.callFunction
+
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const db = cloud.database()
   const params = { ...event, updatedAt: Date.now() }
   let result = {}
 
   try {
-    await getUserInfo
-      .main()
+    await cf({ name: 'getUserInfo', data: { openid: OPENID } })
       .then(async (res) => {
-        const { code, message, data = {} } = res
+        const { code, message, data = {} } = res.result
         const { _id } = data
         await db.collection('table_user').doc(_id).update({ data: params })
         result = { code: 200, message: 'success', data: params }

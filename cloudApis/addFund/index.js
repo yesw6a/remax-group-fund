@@ -1,11 +1,11 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const getFundDetail = require('../getFundDetail')
-const getUserInfo = require('../getUserInfo')
 
 cloud.init()
 
+const { OPENID } = cloud.getWXContext()
 const db = cloud.database()
+const cf = cloud.callFunction
 
 /**
  * 更新基金列表
@@ -38,10 +38,9 @@ const updateFund = async (detail = {}) => {
  * @param {number} rate  - 基金收益率
  */
 const updateUserFundInfo = async (code, rate) => {
-  await getUserInfo
-    .main()
+  await cf({ name: 'getUserInfo', data: { openid: OPENID } })
     .then((res) => {
-      const { data } = res
+      const { data } = res.result
       const { _id, funds } = data
       let temp = funds
       if (!temp) {
@@ -74,10 +73,9 @@ exports.main = async (event) => {
       }
     }
 
-    await getFundDetail
-      .main({ code: code })
+    await cf({ name: 'getFundDetail', data: { code } })
       .then((res) => {
-        const { data } = res || {}
+        const { data } = res.result
         updateFund(data)
       })
       .catch((err) => {
