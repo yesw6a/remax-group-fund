@@ -1,6 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, Image, Button } from 'remax/wechat'
 import classNames from 'classnames'
+import { apiRankingRate } from '@/utils/apis'
+import { useRequest } from '@/hooks'
 
 import styles from './style.scss'
 
@@ -14,6 +16,8 @@ const rankingAttrs = [
 const rankingDefault = { rank: '-', nickname: '-', fundName: '-', code: '-', rate: '-' }
 
 export default () => {
+  const [requestRankingRate, rankingRateList] = useRequest(apiRankingRate)
+
   const renderRanking = () => {
     return (
       <View className={styles.ranking__wrapper}>
@@ -48,5 +52,10 @@ export default () => {
       </View>
     )
   }
+
+  useEffect(() => {
+    requestRankingRate()
+  }, [])
+
   return <View className={styles.wrapper}>{renderRanking()}</View>
 }

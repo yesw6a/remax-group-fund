@@ -44,7 +44,7 @@ function Index() {
 
   const handleAddFund = (code) => {
     const value = modalFundCurrentRateInputRef.current.getValue() || '0'
-    if (Number(isNaN)) {
+    if (!value || isNaN(Number(value))) {
       return Toast.showInfo('收益率需为数字')
     }
     const rate = BigNumber(value).times(100).toFixed(2)

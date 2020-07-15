@@ -10,17 +10,13 @@ exports.main = async (event, context) => {
   const cf = cloud.callFunction
   const params = {
     ...event,
+    _openid: OPENID,
     updatedAt: Date.now(),
   }
   let result = {}
 
   try {
-    await cf({
-      name: 'getUserInfo',
-      data: {
-        openid: OPENID,
-      },
-    })
+    await cf({ name: 'getUserInfo', data: { openid: OPENID } })
       .then(async (res) => {
         const { code, message, data = {} } = res.result
         const { _id } = data

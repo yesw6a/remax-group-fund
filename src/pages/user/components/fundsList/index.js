@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { View, Text } from 'remax/wechat'
 import BigNumber from 'bignumber.js'
 import VanSwiperCell from '@vant/weapp/dist/swipe-cell'

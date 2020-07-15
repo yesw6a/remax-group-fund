@@ -10,14 +10,14 @@
     color: $BlackS;
   }
   .fund_list__wrapper {
-    padding: 0 20px;
+    // padding: 0 20px;
     background-color: $White;
   }
   .item__container {
     @include flex-row();
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px;
     border-top-width: 1px;
     border-top-color: $Divider;
     border-top-style: solid;
@@ -50,16 +50,17 @@
     @include flex-row();
     justify-content: center;
     align-items: center;
+    flex: 1;
     height: 100%;
   }
   .item_unfollow__button {
     @include itemRightButton();
-    width: 100px;
+    // width: 100px;
     background-color: #ee0a24;
   }
   .item_update_rate__button {
     @include itemRightButton();
-    width: 120px;
+    // width: 120px;
     background-color: $Secondary;
   }
 }
