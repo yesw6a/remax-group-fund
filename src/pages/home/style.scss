@@ -3,13 +3,19 @@
 .wrapper {
   .ranking__wrapper {
     padding: 24px;
+    .ranking__wrapper__2 {
+      flex: 2 !important;
+    }
     .ranking_rank {
       width: 80px;
     }
     .ranking_nickname {
+      @include single-line-ellipsis();
       width: 120px;
     }
     .ranking_fundName {
+      @include single-line-ellipsis();
+      flex: 2 !important;
       width: 200px;
     }
     .ranking_code {
@@ -24,6 +30,7 @@
       align-items: center;
       height: 78px;
       .ranking_title__text {
+        flex: 1;
         text-align: center;
         font-size: 28px;
         font-weight: bold;
@@ -32,9 +39,11 @@
     }
     .ranking__container {
       @include flex-row();
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 68px;
       .ranking__container__text {
+        flex: 1;
         text-align: center;
         font-size: 24px;
         color: $BlackM;

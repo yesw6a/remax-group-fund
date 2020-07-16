@@ -2,7 +2,8 @@ module.exports = {
   pages: ['pages/launch/index', 'pages/home/index', 'pages/user/index'],
   window: {
     navigationBarTitleText: '群基金收益率排行榜',
-    // navigationBarBackgroundColor: '#282c34'
+    navigationBarBackgroundColor: '#ffffff',
+    navigationBarTextStyle: 'black',
   },
   tabBar: {
     color: '#1A1920',

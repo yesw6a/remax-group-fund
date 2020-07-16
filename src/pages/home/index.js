@@ -28,7 +28,10 @@ export default () => {
     return rankingRateList.map((item, index) => {
       const rowData = Object.assign({}, rankingDefault, item, { rank: index + 1 })
       return (
-        <View key={index} className={styles.ranking__container}>
+        <View
+          key={index}
+          className={classNames(styles.ranking__container, styles[`ranking__container__${index}`])}
+        >
           {rankingAttrs.map(({ value, suffix, formatter }, index2) => (
             <View
               key={index2}
