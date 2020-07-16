@@ -8,15 +8,34 @@ import styles from './style.scss'
 
 const rankingAttrs = [
   { label: '排名', value: 'rank' },
-  { label: '昵称', value: 'nickname' },
+  { label: '昵称', value: 'nickName' },
   { label: '名称', value: 'fundName' },
   { label: '代码', value: 'code' },
   { label: '收益率', value: 'rate', suffix: '%' },
 ]
-const rankingDefault = { rank: '-', nickname: '-', fundName: '-', code: '-', rate: '-' }
+const rankingDefault = { rank: '-', nickName: '-', fundName: '-', code: '-', rate: '-' }
 
 export default () => {
-  const [requestRankingRate, rankingRateList] = useRequest(apiRankingRate)
+  const [requestRankingRate, rankingRateList] = useRequest(apiRankingRate, { initData: [] })
+
+  const renderRowItem = () => {
+    return rankingRateList.map((item, index) => {
+      const rowData = Object.assign({}, rankingDefault, item, { rank: index + 1 })
+      return (
+        <View key={index} className={styles.ranking__container}>
+          {rankingAttrs.map(({ value, suffix }, index2) => (
+            <View
+              key={index2}
+              className={classNames(styles.ranking__container__text, styles[`ranking_${value}`])}
+            >
+              {rowData[value]}
+              {suffix}
+            </View>
+          ))}
+        </View>
+      )
+    })
+  }
 
   const renderRanking = () => {
     return (
@@ -31,24 +50,7 @@ export default () => {
             </View>
           ))}
         </View>
-        {Array(10)
-          .fill(rankingDefault)
-          .map((item, index) => (
-            <View key={index} className={styles.ranking__container}>
-              {rankingAttrs.map(({ value, suffix }, index2) => (
-                <View
-                  key={index2}
-                  className={classNames(
-                    styles.ranking__container__text,
-                    styles[`ranking_${value}`]
-                  )}
-                >
-                  {item[value]}
-                  {suffix}
-                </View>
-              ))}
-            </View>
-          ))}
+        {renderRowItem()}
       </View>
     )
   }
