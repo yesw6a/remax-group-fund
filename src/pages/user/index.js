@@ -47,9 +47,9 @@ function Index() {
     if (!value || isNaN(Number(value))) {
       return Toast.showInfo('收益率需为数字')
     }
-    const rate = BigNumber(value).times(100).toFixed(2)
-    Toast.showLoading()
-    apiAddFund({ code: code, rate: rate }).then((res) => {
+    const rate = BigNumber(value).times(100).dp(2).toNumber()
+    Toast.showLoading('正在操作')
+    apiAddFund({ code, rate }).then((res) => {
       requestFundList()
     })
   }

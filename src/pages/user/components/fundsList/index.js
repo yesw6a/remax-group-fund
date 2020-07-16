@@ -25,7 +25,7 @@ function FundsList({ fundList, onRefresh }) {
   }
 
   const onUnfollow = (code) => {
-    Toast.showLoading()
+    Toast.showLoading('正在操作')
     apiDeleteUserFund({ code }).then(() => {
       Toast.showSuccess('已取消关注')
       onRefresh()
