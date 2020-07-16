@@ -128,7 +128,7 @@ function Index() {
       <View className={styles.user_info__wrapper}>
         <Image src={avatarUrl} className={styles.user_avatar__img} />
         <Text className={styles.user_name__text}>{nickName}</Text>
-        <Text className={styles.user_name__text}>v0.0.4</Text>
+        <Text className={styles.user_name__text}>v0.0.5</Text>
         {renderAddFund()}
         {Array.isArray(fundList) && fundList.length > 0 && (
           <FundsList fundList={fundList} onRefresh={requestFundList} />
