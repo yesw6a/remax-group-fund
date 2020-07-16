@@ -33,7 +33,7 @@ function Index() {
   const handleSearchFund = () => {
     const value = fundCodeInputRef.current.getValue() || '260108'
     if (!value || !value.trim()) {
-      // return Toast.showInfo('基金代码不能为空')
+      return Toast.showInfo('基金代码不能为空')
     }
     Toast.showLoading('信息加载中')
     requestFundDetail({ code: value }).then((res) => {
@@ -47,9 +47,13 @@ function Index() {
     if (!value || isNaN(Number(value))) {
       return Toast.showInfo('收益率需为数字')
     }
+    if (value >= 1000) {
+      return Toast.showInfo('首富就不要参与排行了吧->_->')
+    }
     const rate = BigNumber(value).times(100).dp(2).toNumber()
     Toast.showLoading('正在操作')
     apiAddFund({ code, rate }).then((res) => {
+      Toast.showLoading('添加成功')
       requestFundList()
     })
   }
@@ -77,7 +81,6 @@ function Index() {
               className={styles.modal_fund_detail_current_rate__input}
               placeholder="请输入该基金当前收益率"
               debounced
-              type="number"
             />
           </View>
         </View>
@@ -107,8 +110,10 @@ function Index() {
             placeholder="请输入基金代码"
             clearable
             debounced
+            type="number"
             leftIcon="search"
             confirmType="search"
+            onConfirm={handleSearchFund}
           />
           <Button className={styles.fund_add__button} onClick={handleSearchFund}>
             搜索
